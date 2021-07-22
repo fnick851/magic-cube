@@ -11,7 +11,7 @@ import {
 } from "three"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js"
 import gsap from "gsap"
-import { onMounted, onUnmounted, ref } from "vue"
+import { onMounted, onBeforeUnmount, ref } from "vue"
 import useOnResize from "../uses/useOnResize"
 import useTweakpane from "../uses/useTweakpane"
 
@@ -104,8 +104,8 @@ onMounted(() => {
   animationReq = window.requestAnimationFrame(eachFrame)
 })
 
-// clean up when unmounted
-onUnmounted(() => {
+// clean up
+onBeforeUnmount(() => {
   window.cancelAnimationFrame(animationReq)
 })
 </script>
